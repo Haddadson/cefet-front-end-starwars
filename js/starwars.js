@@ -9,6 +9,10 @@ $.ajax('https://swapi.co/api/films/', {
     let $listaFilmes = $('#filmes ul');
     $listaFilmes.empty();
 
+    resposta.results.sort(function(a, b) {
+      return a.episode_id - b.episode_id;
+    });
+
     resposta.results.forEach(function(filme) {
       $('<li></li>')
         .html('Episode ' + filme.episode_id + ': ' + filme.title)
