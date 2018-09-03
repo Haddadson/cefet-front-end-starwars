@@ -4,6 +4,12 @@ $.ajax({
   dataType: 'json',
   success: function(resposta) {
     var filmes = resposta.results;
+
+    //Ordenar array de filmes
+    filmes.sort(function(a, b) {
+      return a.episode_id - b.episode_id;
+    });
+
     for(let i = 0; i < filmes.length; i++){
         let novoEl = document.createElement('li');
         let html = `<li></li>`;
