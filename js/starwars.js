@@ -1,8 +1,4 @@
-// Seu código javascript aqui :)
-// Use a Star Wars API ( https://swapi.co/) para carregar:
-//  - A lista de filmes
-//  - A introdução de cada filme, quando ele for clicado
-
+let romanos = ['I', 'II','III', 'IV','V', 'VI','VII', 'VIII', 'IX'];
 $.ajax({
   url: 'https://swapi.co/api/films/',
   dataType: 'json',
@@ -11,7 +7,7 @@ $.ajax({
     for(let i = 0; i < filmes.length; i++){
         let novoEl = document.createElement('li');
         let html = `<li></li>`;
-        $(novoEl).html('Episode ' + filmes[i].episode_id + ': ' + filmes[i].title);
+        $(novoEl).html('Episode ' + romanos[filmes[i].episode_id - 1] + ': ' + filmes[i].title);
         $(novoEl).data('data-url-episodio', filmes[i].url);
         $(novoEl).appendTo("#lista-filmes");
     }
@@ -26,7 +22,7 @@ $('#filmes').on('click', 'li', function(e) {
     url: $(elemento).data('data-url-episodio'),
     dataType: 'json',
     success: function(resposta) {
-      let html = 'Episode ' + resposta.episode_id;
+      let html = 'Episode ' + romanos[filmes[i].episode_id - 1];
       let titulo = resposta.title.toUpperCase();
       html += '\n' + titulo;
       html += '\n\n'  + resposta.opening_crawl;
