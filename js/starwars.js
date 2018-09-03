@@ -1,4 +1,5 @@
 let romanos = ['I', 'II','III', 'IV','V', 'VI','VII', 'VIII', 'IX'];
+
 $.ajax({
   url: 'https://swapi.co/api/films/',
   dataType: 'json',
@@ -20,7 +21,6 @@ $.ajax({
   }
 });
 
-
 $('#filmes').on('click', 'li', function(e) {
   let elemento = e.currentTarget;
 
@@ -35,4 +35,9 @@ $('#filmes').on('click', 'li', function(e) {
       $('#intro').html(html);
     }
   });
+});
+
+$( document ).ready(function() {
+  let audio = new Audio('audio/star-wars-theme.mp3');
+  audio.play();
 });
