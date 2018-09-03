@@ -8,12 +8,8 @@
   </head>
   <body>
     <nav id="filmes">
-      <ul>
-        <!-- vamos usar esse atributo "data-url-episodio" pra saber para
-             onde devemos fazer a requisição Ajax quando um <li> for clicado -->
-        <li data-url-episodio="http://swapi.co/api/films/4/">Episode I</li>
-        <li data-url-episodio="http://swapi.co/api/films/5/">Episode II</li>
-        <li data-url-episodio="http://swapi.co/api/films/.../">Episode ...</li>
+      <ul id="lista-filmes">
+
       </ul>
     </nav>
 
@@ -47,7 +43,7 @@
         </pre>
       </div>
     </main>
-
+    <script src = "js\jquery-3.3.1.min.js" charset="utf-8"></script>
     <script src="js/starwars.js" charset="utf-8"></script>
     <script src="js/reinicia-animacao.js" charset="utf-8"></script>
   </body>
