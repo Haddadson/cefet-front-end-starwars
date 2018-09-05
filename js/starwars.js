@@ -37,7 +37,7 @@ $('#filmes').on('click', 'li', function(e) {
   });
 });
 
-$( document ).ready(function() {
+$(document).ready(function() {
   let audio = new Audio('audio/star-wars-theme.mp3');
   audio.play();
 });
