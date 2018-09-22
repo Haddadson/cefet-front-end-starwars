@@ -28,16 +28,55 @@ $('#filmes').on('click', 'li', function(e) {
     url: $(elemento).data('data-url-episodio'),
     dataType: 'json',
     success: function(resposta) {
-      let html = 'Episode ' + romanos[filmes[i].episode_id - 1];
+      let html = 'Episode ' + romanos[resposta  .episode_id - 1];
       let titulo = resposta.title.toUpperCase();
       html += '\n' + titulo;
       html += '\n\n'  + resposta.opening_crawl;
       $('#intro').html(html);
+
+      let audio = new Audio('audio/star-wars-theme.mp3');
+      let promise = audio.play();
+      if (promise !== undefined) {
+        promise.then(_ => {
+                  console.log(`%c
+                               .-.
+                              |_:_|
+                             /(_Y_)\\
+        .                   ( \\/M\\/ )
+         '.               _.'-/'-'\\-'._
+           ':           _/.--'[[[[]'--.\\_
+             ':        /_'  : |::"| :  '.\\
+               ':     //   ./ |oUU| \\.'  :\\
+                 ':  _:'..' \\_|___|_/ :   :|
+                   ':.  .'  |_[___]_|  :.':\\
+                    [::\\ |  :  | |  :   ; : \\
+                     '-'   \\/'.| |.' \\  .;.' |
+                     |\\_    \\  '-'   :       |
+                     |  \\    \\ .:    :   |   |
+                     |   \\    | '.   :    \  |
+                     /       \\   :. .;       |
+                    /     |   |  :__/     :  \\\\
+                   |  |   |    \\:   | \\   |   ||
+                  /    \\  : :  |:   /  |__|   /|
+                  |     : : :_/_|  /'._\\  '--|_\\
+                  /___.-/_|-'   \\  \\
+                                 '-'`, "font-family:monospace" );
+          }).catch(error => {
+            console.log("DEU ERRO!!");
+          });
+      }
     }
   });
 });
 
 $(document).ready(function() {
   let audio = new Audio('audio/star-wars-theme.mp3');
-  audio.play();
+  let promise = audio.play();
+  if (promise !== undefined) {
+    promise.then(_ => {
+      console.log("Tocou!!")
+    }).catch(error => {
+      console.log("O Chrome passou a barrar Autoplay, então só vai tocar a música quando escolher um filme.");
+    });
+  }
 });
